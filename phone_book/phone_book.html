@@ -22,15 +22,15 @@
         <div id="title">
           <img id="logo" src="/icons/contact-book0-02.png" alt="logo">
           <h1>Phone book</h1>
-        </div>      </div>
+        </div>
+      </div>
     </header>
 
     <main>
       <div id="container_main">
         <div id="main_btns">
           <input id="search_box" type="text" placeholder="search">
-          <button id="contact" type="button"><img src="./icons/add-user.png"
-              alt="human_person_pluse">
+          <button id="contact" type="button"><img src="./icons/add-user.png" alt="human_person_pluse">
           </button>
           <button id="delete_all" type="button"><img src="./icons/bin_delete_recycle_remove_trash_icon.png"
               alt="delete_all">
@@ -38,11 +38,11 @@
         </div>
 
         <div id="list">
-          <ul>
-            <li>
+          <ul id="ul">
+            <!-- <li>
               <img class="images" width="70px" src="./images/man1.jpg" alt="man1" title="man1">
               <span class="names">Jessy Cohen</span>
-              <button class="info" type="button"><img src="./icons/about_info_information_help_ui_icon.png" alt="info"
+              <button class="info" type="button" onclick="openModal()"><img src="./icons/about_info_information_help_ui_icon.png" alt="info"
                   title="info"></button>
 
               <button class="edit" type="button"><img src="./icons/compose_document_edit_pen_pencil_icon.png" alt="edit"
@@ -51,8 +51,8 @@
               <button class="trash_bin" type="button"><img src="./icons/bin_delete_recycle_remove_trash_icon.png"
                   alt="trash_bin" title="trash_bin"></button>
 
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <img class="images" width="70px" src="./images/man2.jpg" alt="man2" title="man2">
               <span class="names">Rose Toledano</span>
               <button class="info" type="button"><img src="./icons/about_info_information_help_ui_icon.png" alt="info"
@@ -76,8 +76,19 @@
 
               <button class="trash_bin" type="button"><img src="./icons/bin_delete_recycle_remove_trash_icon.png"
                   alt="trash_bin" title="trash_bin"></button>
-            </li>
+            </li> -->
           </ul>
+        </div>
+
+
+        <div class="container">
+        </div>
+        <div class="modal" id="myModal" onclick="closeModal(event)">
+          <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)">&times;</button>
+            <h2>Modal Popup</h2>
+            <p>This is a simple modal popup example.</p>
+          </div>
         </div>
     </main>
 
