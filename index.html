@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/icons/contact-book1-02.png" type="image/x-icon">
   <title>Phone book</title>
 </head>
 <link rel="stylesheet" href="./style/style.css">
@@ -30,7 +31,7 @@
       <div id="container_main">
         <div id="main_btns">
           <input id="search_box" type="text" placeholder="search">
-          <button id="contact" type="button"><img src="./icons/add-user.png" alt="human_person_pluse">
+          <button id="contact" type="button"><img src="./icons/add_user_human_person_plus_icon.png" alt="user-account">
           </button>
           <button id="delete_all" type="button"><img src="./icons/bin_delete_recycle_remove_trash_icon.png"
               alt="delete_all">
@@ -80,14 +81,15 @@
           </ul>
         </div>
 
-
         <div class="container">
-        </div>
-        <div class="modal" id="myModal" onclick="closeModal(event)">
-          <div class="modal-content">
-            <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)">&times;</button>
-            <h2>Modal Popup</h2>
-            <p>This is a simple modal popup example.</p>
+          <div class="modal" id="myModal" onclick="closeModal(event)">
+            <div class="modal-content">
+              <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)">&times;</button>
+              <h2>Modal Popup</h2>
+              <img id="modalImg">
+              <p id="phone"></p>
+              <address id="address"></address>
+            </div>
           </div>
         </div>
     </main>

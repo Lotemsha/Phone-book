@@ -1,7 +1,6 @@
 /* #region main */
 * {
   font-family: cursive;
-  /* font-weight: lighter; */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -29,16 +28,21 @@ nav ul li {
     text-decoration: none;
     color: rgb(240, 255, 250);
   }
+
+  a:hover {
+    color: #052317;
+  }
 }
 
 #logo {
-  width: 180px;
-  margin-top: 10px;
+  width: 160px;
+  margin-bottom: 40px;
 }
 
 h1 {
   font-size: 4.5em;
   color: rgb(240, 255, 250);
+  margin: 0;
 }
 
 /*#endregion*/
@@ -46,21 +50,48 @@ h1 {
 /* #region main */
 main {
   background-color: rgb(240, 255, 250);
-  margin: 2% 4% 2% 4%;
+  margin: 0% 8% 2% 8%;
   padding: 5px;
   border-radius: 50px;
   box-shadow: 20px 30px 70px -45px #203333;
 }
 
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#innovation {
+  width: 100%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+}
+
+#about {
+  height: fit-content;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+#contactUs {
+  height: fit-content;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 2%;
+}
+
 #main_btns {
-  /* display: flex;
-  flex-wrap: wrap; */
   height: 50px;
   padding-left: 5%;
   padding-right: 5%;
   margin-top: 5%;
   margin-bottom: 2%;
-  align-items: center;
 }
 
 #delete_all,
@@ -69,6 +100,8 @@ main {
   margin: 0.5%;
   width: 50px;
   height: 50px;
+  border-style: none;
+  background-color: rgb(240, 255, 250);
 }
 
 /* #region list */
@@ -85,11 +118,10 @@ img {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  /* box-shadow: 20px 30px 35px -45px #203333; */
 }
 
 
-#list :hover {
+#list li:hover {
   box-shadow: 20px 30px 35px -45px #203333;
 }
 
@@ -124,11 +156,13 @@ img {
 .edit,
 .trash_bin {
   margin: 0.5%;
+  border-style: none;
+  background-color: rgb(240, 255, 250);
+  cursor: pointer;
 }
 
 /* #endregion */
 /* #endregion */
-
 
 /* #region footer */
 footer {
@@ -143,8 +177,7 @@ footer {
 
 /* #endregion */
 
-
-
+/* #region modal */
 .container {
   text-align: center;
 }
@@ -152,7 +185,7 @@ footer {
 .btn {
   padding: 10px 20px;
   background-color: #007bff;
-  color: white;
+  color: rgb(240, 255, 250);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -172,19 +205,34 @@ footer {
 }
 
 .modal-content {
-  background-color: white;
+  background-color: rgb(240, 255, 250);
   padding: 20px;
   border-radius: 5px;
   text-align: center;
   position: relative;
 }
 
+#modalImg {
+  width: 95px;
+  height: 95px;
+  border-radius: 100%;
+  margin: 2%;
+}
+
+#phone{
+  padding: auto;
+  
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
 .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: red;
-  color: white;
+  background-color: rgb(21, 174, 123);
+  color: rgb(240, 255, 250);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -194,3 +242,5 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+/* #endregion */
