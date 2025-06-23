@@ -1,7 +1,12 @@
 "use strict"
-
+// #region Modal
 function openModal() {
   document.getElementById('myModal').style.display = 'flex';
+  document.body.classList.add('no-scroll');
+}
+
+function openEditModal() {
+  document.getElementById("editModal").style.display = "flex";
   document.body.classList.add('no-scroll');
 }
 
@@ -13,6 +18,15 @@ function closeModal(event) {
   }
 }
 
+function closeEditModal(event) {
+  const modal = document.getElementById("editModal");
+  if (event.target === document.getElementById('editModal') || event.target === document.getElementById('closeEditModalBtn')) {
+    modal.style.display = "none";
+    document.body.classList.remove("no-scroll");
+  }
+}
+//#endregion
+// #region List Array
 let listArr = [
   {
     img: "./images/man1.jpg",
@@ -45,10 +59,14 @@ let listArr = [
     type: "button"
   }
 ];
+//#endregion
 
 let list = document.getElementById("list");
 let ul = document.getElementById("ul");
+const deleteAllContacts = document.getElementById("delete_all");
+let currentEditing = null;
 
+// #region Build Array
 listArr.forEach((item) => {
   let li = document.createElement("li");
   let img = document.createElement("img");
@@ -83,40 +101,74 @@ listArr.forEach((item) => {
 
   li.style.listStyle = "none";
 
+  let buttonContainer = document.createElement("div");
+  buttonContainer.className = "button-row"; // נשתמש בזה ב־CSS
+
+  buttonContainer.appendChild(infoBtn);
+  buttonContainer.appendChild(editBtn);
+  buttonContainer.appendChild(trashBtn);
+
   li.appendChild(img);
   li.appendChild(span);
-  li.appendChild(infoBtn);
-  li.appendChild(editBtn);
-  li.appendChild(trashBtn);
+  li.appendChild(buttonContainer);
 
   ul.appendChild(li);
 
+  // info button function:
   infoBtn.addEventListener("click", function () {
-    document.getElementById("myModal").style.display = "flex";
     document.querySelector("#myModal h2").textContent = item.name;
     document.getElementById("modalImg").src = item.img;
     document.getElementById("phone").textContent = `Phone number: ${item.phone}`;
     document.getElementById("address").textContent = `Address: ${item.address}`;
     openModal();
-    openModal();
   });
 
+  // trash button function:
   trashBtn.addEventListener("click", function () {
-    li.remove();
+    const confirmDelete = confirm(`Are you sure you want to delete ${item.name}?`);
+    if (confirmDelete) {
+      li.remove();
+    }
   });
+
+  // edit button function:
+  editBtn.addEventListener("click", function () {
+    document.getElementById("editName").value = item.name;
+    document.getElementById("editPhone").value = item.phone;
+    document.getElementById("editAddress").value = item.address;
+    currentEditing = { item, span };
+    openEditModal();
+  });
+});
+
+// save information button function:
+document.getElementById("saveEdit").addEventListener("click", function () {
+  if (currentEditing) {
+    const { item, span } = currentEditing;
+
+    item.name = document.getElementById("editName").value;
+    item.phone = document.getElementById("editPhone").value;
+    item.address = document.getElementById("editAddress").value;
+
+    span.textContent = item.name;
+
+    closeEditModal({ target: document.getElementById("editModal") });
+    currentEditing = null;
+  }
 });
 
 list.appendChild(ul);
 
+//#endregion
+// #region Main buttons
+deleteAllContacts.addEventListener('click', () => {
+  const confirmDelete = confirm("Are you sure you want to delete ALL your contacts?");
+  if (confirmDelete) {
+    ul.innerHTML = "";
+  }
+})
 
-// const list1 = document.getElementById('list');
-
-// list.addEventListener('click', function (e) {
-//   const li = e.target.closest('li');
-//   if (li && list.contains(li)) {
-//     console.log('לחצת על:', li.textContent.trim());
-//   }
-// });
+//#endregion
 
 
 
