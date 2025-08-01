@@ -5,33 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/icons/contact-book1-02.png" type="image/x-icon">
+  <link rel="stylesheet" href="./style/style.css">
   <title>Phone book</title>
 </head>
-<link rel="stylesheet" href="./style/style.css">
+
 
 <body>
   <div id="container_body">
     <header>
-      <div>
-        <nav>
-          <ul>
-            <li><a href="./contact_us.html">Contact us</a></li>
-            <li><a href="./about_us.html">About us</a></li>
-            <li><a href="./index.html">Home</a></li>
-          </ul>
-        </nav>
-        <div id="title">
-          <a href="./index.html"><img id="logo" src="./icons/contact-book0-02.png" alt="logo"></a>
-          <h1>Phone book</h1>
-        </div>
+
+      <nav>
+        <ul>
+          <li><a href="./contact_us.html">Contact us</a></li>
+          <li><a href="./about_us.html">About us</a></li>
+          <li><a href="./index.html">Home</a></li>
+        </ul>
+      </nav>
+      <div id="title">
+        <a href="./index.html"><img id="logo" src="./icons/contact-book0-02.png" alt="logo"></a>
+        <h1>Phone book</h1>
       </div>
+
     </header>
 
     <main>
       <div id="container_main">
         <div id="main_btns">
+          <div>
+            <span id="peopleCount">people</span>
+          </div>
           <input id="search_box" type="text" placeholder="search">
-          <button id="contact" type="button"><img src="./icons/add_user_human_person_plus_icon.png" alt="user-account">
+          <button id="newContact" type="button"><img src="./icons/add_user_human_person_plus_icon.png"
+              alt="user-account">
           </button>
           <button id="delete_all" type="button"><img src="./icons/bin_delete_recycle_remove_trash_icon.png"
               alt="delete_all">
@@ -81,16 +86,16 @@
           </ul>
         </div>
 
-        <div class="container">
-          <div class="modal" id="myModal" onclick="closeModal(event)">
-            <div class="modal-content">
-              <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)"><img src="icons/exit.png"
-                  alt="Exit"></button>
-              <h2>Modal Popup</h2>
-              <img id="modalImg">
-              <p id="phone"></p>
-              <address id="address"></address>
-            </div>
+        <div class="modal" id="myModal" onclick="closeModal(event)">
+          <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)"><img src="icons/exit.png"
+                alt="Exit"></button>
+            <h2>Modal Popup</h2>
+            <img src="/icons/user.png" alt="image" id="modalImg">
+            <p id="modalPhone"></p>
+            <address id="modalAddress"></address>
+            <p id="modalEmail"></p>
+            <p id="modalComment"></p>
           </div>
         </div>
 
@@ -100,22 +105,53 @@
                 alt="Exit"></button>
             <h2>Edit contact <br> information</h2>
             <label for="editName">Name:</label>
-            <input id="editName" type="text" placeholder="Name" />
+            <input id="editName" type="text" placeholder="Name">
             <label for="editPhone">Phone number:</label>
-            <input id="editPhone" type="text" placeholder="Phone number" />
+            <input id="editPhone" type="text" placeholder="Phone number">
             <label for="editAddress">Address:</label>
-            <input id="editAddress" type="text" placeholder="Address" />
+            <input id="editAddress" type="text" placeholder="Address">
+            <label for="editEmail">Email address:</label>
+            <input id="editEmail" type="text" placeholder="Email">
+            <label for="editComment">Comment:</label>
+            <input type="text" id="editComment" placeholder="Write here...">
             <button class="btn" id="saveEdit">Save</button>
           </div>
         </div>
 
+        <div class="modal" id="addModal" onclick="closeAddModal(event)">
+          <div class="modal-content">
+            <button class="close-btn" id="closeAddModalBtn" onclick="closeAddModal(event)"><img src="icons/exit.png"
+                alt="Exit"></button>
+            <h2>Add contact <br> information</h2>
+            <label for="addName">Name:</label>
+            <input id="addName" type="text" placeholder="Name">
+            <label for="addPhone">Phone number:</label>
+            <input id="addPhone" type="text" placeholder="Phone number">
+            <label for="addAddress">Address:</label>
+            <input id="addAddress" type="text" placeholder="Address">
+            <label for="addEmail">Email address:</label>
+            <input id="addEmail" type="text" placeholder="Email">
+            <label for="addComment">Text:</label>
+            <input type="text" id="addComment" placeholder="Write here...">
+            <label for="addNewImage">Picture:</label>
+            <input id="addNewImage" type="text" placeholder="Image URL">
+            <button class="btn" id="saveNewContact">Save</button>
+          </div>
+        </div>
+
+        <div>
+          <span id="emptyMessage">
+            No contacts
+          </span>
+        </div>
+      </div>
     </main>
 
     <footer>
-      <span id="copyrights">&copy; All copyrights reserved to Lotem Sharir</span>
+      <span id="copyrights">&copy; All copyrights reserved to Lotem Sharir & Ameed Halabi</span>
     </footer>
   </div>
-  <script src="./Assets/js.js"></script>
+  <script src="./js.js"></script>
 </body>
 
 </html>
