@@ -35,7 +35,7 @@
             <span id="peopleCount">people</span>
           </div>
           <input id="search_box" type="text" placeholder="search">
-          <button id="newContact" type="button"><img src="./icons/add_user_human_person_plus_icon.png"
+          <button id="addNewContact" type="button"><img src="./icons/add_user_human_person_plus_icon.png"
               alt="user-account">
           </button>
           <button id="delete_all" type="button"><img src="./icons/bin_delete_recycle_remove_trash_icon.png"
@@ -88,8 +88,8 @@
 
         <div class="modal" id="myModal" onclick="closeModal(event)">
           <div class="modal-content">
-            <button class="close-btn" id="closeModalBtn" onclick="closeModal(event)"><img src="icons/exit.png"
-                alt="Exit"></button>
+            <button type="button" class="close-btn" id="closeModalBtn" onclick="closeModal(event)"><img
+                src="icons/exit.png" alt="Exit"></button>
             <h2>Modal Popup</h2>
             <img src="/icons/user.png" alt="image" id="modalImg">
             <p id="modalPhone"></p>
@@ -101,8 +101,8 @@
 
         <div class="modal" id="editModal" onclick="closeEditModal(event)">
           <div class="modal-content">
-            <button class="close-btn" id="closeEditModalBtn" onclick="closeEditModal(event)"><img src="icons/exit.png"
-                alt="Exit"></button>
+            <button type="button" class="close-btn" id="closeEditModalBtn" onclick="closeEditModal(event)"><img
+                src="icons/exit.png" alt="Exit"></button>
             <h2>Edit contact <br> information</h2>
             <label for="editName">Name:</label>
             <input id="editName" type="text" placeholder="Name">
@@ -114,7 +114,11 @@
             <input id="editEmail" type="text" placeholder="Email">
             <label for="editComment">Comment:</label>
             <input type="text" id="editComment" placeholder="Write here...">
-            <button class="btn" id="saveEdit">Save</button>
+            <div class="uploader">
+              <button type="button" id="uploadBtn1">Upload <br>Image</button>
+              <input id="editNewImage" type="text" placeholder="Image URL">
+            </div>
+            <button type="button" class="btn" id="saveEdit">Save</button>
           </div>
         </div>
 
@@ -134,10 +138,16 @@
             <label for="addComment">Text:</label>
             <input type="text" id="addComment" placeholder="Write here...">
             <label for="addNewImage">Picture:</label>
-            <input id="addNewImage" type="text" placeholder="Image URL">
-            <button class="btn" id="saveNewContact">Save</button>
+            <div class="uploader">
+              <button type="button" id="uploadBtn2">Upload <br>Image</button>
+              <input id="addNewImage" type="text" placeholder="Image URL">
+            </div>
+            <button type="button" class="btn" id="saveNewContact">Save</button>
           </div>
         </div>
+
+        <input type="file" id="hiddenFileInput" accept="image/*" style="display: none;">
+        <div id="previewContainer"></div>
 
         <div>
           <span id="emptyMessage">

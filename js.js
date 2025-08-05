@@ -85,7 +85,7 @@ let ul = document.getElementById("ul");
 
 // Creating the top buttons
 const deleteAllContacts = document.getElementById("delete_all");
-const addNewContact = document.getElementById("newContact");
+const addNewContact = document.getElementById("addNewContact");
 
 let currentEditing = null;
 
@@ -97,6 +97,7 @@ let topBarSearch = document.getElementById("search_box");
 
 // empty massage:
 const emptyMassege = document.getElementById("emptyMessage");
+
 //#endregion
 // #region Build Array
 listArr.sort((a, b) => a.name.localeCompare(b.name));
@@ -170,7 +171,7 @@ listArr.forEach((item) => {
   });
 
   // edit button function:
-    editBtn.addEventListener("click", function () {
+  editBtn.addEventListener("click", function () {
     document.getElementById("editName").value = item.name;
     document.getElementById("editPhone").value = item.phone;
     document.getElementById("editAddress").value = item.address;
@@ -201,6 +202,20 @@ document.getElementById("saveEdit").addEventListener("click", function () {
     item.address = document.getElementById("editAddress").value;
     item.email = document.getElementById("editEmail").value;
     item.comment = document.getElementById("editComment").value;
+    const newImageUrl = document.getElementById("editNewImage").value;
+    if (newImageUrl && newImageUrl.trim() !== "") {
+      item.img = newImageUrl;
+
+      // עדכון התמונה בדומ
+      const li = span.closest("li");
+      const imgElement = li.querySelector("img");
+      if (imgElement) {
+        imgElement.src = newImageUrl;
+      }
+      URL1.value = "";
+      URL2.value = "";
+    }
+
 
     span.textContent = item.name;
 
@@ -222,8 +237,61 @@ document.getElementById("saveEdit").addEventListener("click", function () {
 
 list.appendChild(ul);
 //#endregion
+// #region Buttons
+let URL1 = document.getElementById("editNewImage");
+let URL2 = document.getElementById("addNewImage");
 
-// #region Main buttons
+const hiddenInput = document.getElementById("hiddenFileInput");
+const preview = document.getElementById("previewContainer");
+
+// Upload button triggers
+document.getElementById("uploadBtn2").addEventListener("click", () => {
+  hiddenInput.click();
+});
+
+document.getElementById("uploadBtn1").addEventListener("click", () => {
+  hiddenInput.click();
+});
+
+// When image is selected
+hiddenInput.addEventListener("change", () => {
+  const file = hiddenInput.files[0];
+
+  if (file && file.type.startsWith("image/")) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const imageData = e.target.result;
+
+      // Clear previous preview
+      preview.innerHTML = "";
+
+      // Show image in preview
+      const img = document.createElement("img");
+      img.src = imageData;
+      img.alt = "Uploaded picture";
+      img.className = "uploaded_image";
+
+
+      // Update input fields based on modal state
+      const addModal = document.getElementById("addModal");
+      const editModal = document.getElementById("editModal");
+
+      if (addModal.style.display === "flex") {
+        URL2.value = imageData;
+      } else if (editModal.style.display === "flex") {
+        URL1.value = imageData;
+      }
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    alert("אנא בחרי קובץ תמונה תקין");
+  }
+});
+
+
+
 // The delete button of the top bar function:
 deleteAllContacts.addEventListener('click', () => {
   const confirmDelete = confirm("Are you sure you want to delete ALL your contacts?");
@@ -316,6 +384,25 @@ function clearAddFields() {
   document.getElementById("addNewImage").value = "";
 }
 
+// A method that work after typing in the search bar , The method get the term entered in the search bar and if the term is in encluded in the contacter name it display it otherwise hide it :
+topBarSearch.addEventListener("input", () => {
+  const searchTerm = topBarSearch.value.toLowerCase();
+  const listItems = document.querySelectorAll("#ul > li");
+
+  listItems.forEach(li => {
+    const nameElement = li.querySelector(".names");
+    const nameText = nameElement.textContent.toLowerCase();
+
+    if (nameText.includes(searchTerm))
+      li.style.display = "flex";
+    else
+      li.style.display = "none";
+  });
+
+  updatePeopleCount();
+});
+//#endregion
+//#region new contact:
 // add the new contact to list Array
 function buildContactElement(item) {
   let li = document.createElement("li");
@@ -410,6 +497,7 @@ function buildContactElement(item) {
     document.getElementById("editAddress").value = item.address;
     document.getElementById("editEmail").value = item.email;
     document.getElementById("editComment").value = item.comment;
+    document.getElementById("editNewImage").textContent = item.img;
     currentEditing = { item, span };
     openEditModal();
   });
@@ -425,25 +513,6 @@ function buildContactElement(item) {
   emptyMassege.style.display = "none";
   console.log(listArr);
 }
-
-
-// A method that work after typing in the search bar , The method get the term entered in the search bar and if the term is in encluded in the contacter name it display it otherwise hide it :
-topBarSearch.addEventListener("input", () => {
-  const searchTerm = topBarSearch.value.toLowerCase();
-  const listItems = document.querySelectorAll("#ul > li");
-
-  listItems.forEach(li => {
-    const nameElement = li.querySelector(".names");
-    const nameText = nameElement.textContent.toLowerCase();
-
-    if (nameText.includes(searchTerm))
-      li.style.display = "flex";
-    else
-      li.style.display = "none";
-  });
-
-  updatePeopleCount();
-});
 //#endregion
 
 
