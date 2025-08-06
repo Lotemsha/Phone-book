@@ -108,7 +108,7 @@ main {
 }
 
 #delete_all,
-#newContact {
+#addNewContact {
   float: right;
   margin: 0.5%;
   width: 50px;
@@ -239,6 +239,10 @@ footer {
   }
 }
 
+#myModal {
+  font-size: 2em;
+}
+
 #modalImg {
   width: 200px;
   height: fit-content;
@@ -249,8 +253,7 @@ footer {
 #phone,
 #address,
 #comment,
-#email
- {
+#email {
   padding: auto;
   font-size: 1.5em;
 }
@@ -262,11 +265,12 @@ footer {
 #addPhone,
 #addAddress,
 #addNewImage,
+#editNewImage,
 #addEmail,
 #addComment,
 #editComment,
 #editEmail,
- label {
+label {
   padding: auto;
   font-size: 1.5em;
 }
@@ -305,6 +309,18 @@ footer {
 #saveNewContact {
   border: none;
   background-color: rgb(21, 174, 123);
+  padding: 10px;
+  border-radius: 10px;
+  color: aliceblue;
+  font-size: 1.5em;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#uploadBtn1,
+#uploadBtn2 {
+  border: none;
+  background-color: rgb(0, 0, 0);
   padding: 10px;
   border-radius: 10px;
   color: aliceblue;
@@ -391,6 +407,10 @@ footer {
     font-size: 1.2em;
 
   }
+}
+
+#myModal {
+  font-size: 1.5em;
 }
 
 /* #endregion */
