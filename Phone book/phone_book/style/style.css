@@ -1,0 +1,416 @@
+/* #region main */
+* {
+  font-family: cursive;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#container_body {
+  background-color: rgb(21, 174, 123);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* #endregion */
+
+/* #region header*/
+header {
+  padding-top: 3%;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  font-size: 2.5em;
+  padding: 5%;
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: rgb(240, 255, 250);
+  }
+
+  a:hover {
+    color: #052317;
+  }
+}
+
+#logo {
+  width: 250px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 6em;
+  color: rgb(240, 255, 250);
+  margin: 0;
+}
+
+/*#endregion*/
+
+/* #region main */
+main {
+  background-color: rgb(240, 255, 250);
+  margin: 0% 8% 2% 8%;
+  padding: 5px;
+  border-radius: 50px;
+  box-shadow: 20px 30px 70px -45px #203333;
+  flex: 1;
+}
+
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#innovation {
+  width: 100%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+}
+
+#about {
+  height: fit-content;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  font-size: 2em;
+}
+
+#contactUs {
+  height: fit-content;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 2%;
+  font-size: 2em;
+  margin: 10%;
+}
+
+#main_btns {
+  height: 50px;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+#delete_all,
+#addNewContact {
+  float: right;
+  margin: 0.5%;
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  background-color: rgb(240, 255, 250);
+  cursor: pointer;
+}
+
+/* #region list */
+img {
+  width: 50px;
+}
+
+#list ul li {
+  background-color: rgb(240, 255, 250);
+  margin: 18px;
+  padding: 1%;
+  border-radius: 40px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 97%;
+  box-sizing: border-box;
+}
+
+#ul {
+  width: 100%;
+  padding: 0;
+  margin: 0%;
+}
+
+.names {
+  font-size: 2em;
+  margin-right: auto;
+}
+
+#delete_all {
+  margin-left: auto;
+}
+
+.images {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+  margin: 2%;
+}
+
+#search_box {
+  border-radius: 45px;
+  height: 30px;
+  font-size: 1.5em;
+  padding: 20px;
+  color: #203333;
+  border-color: solid 1px #203333;
+  background-color: rgb(240, 255, 250)
+}
+
+.button-row {
+  display: flex;
+}
+
+.info,
+.edit,
+.trash_bin {
+  margin: 0.5%;
+  border-style: none;
+  background-color: rgb(240, 255, 250);
+  cursor: pointer;
+}
+
+#emptyMessage {
+  display: none;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 5%;
+}
+
+/* #endregion */
+/* #endregion */
+
+/* #region footer */
+footer {
+  font-size: 1.2em;
+  padding-bottom: 2%;
+  color: rgb(240, 255, 250);
+  text-align: center;
+  text-decoration-line: overline;
+  text-decoration-color: rgb(47, 217, 160);
+  text-decoration-thickness: 5%;
+}
+
+/* #endregion */
+
+/* #region modal */
+.container {
+  text-align: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: rgb(240, 255, 250);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+
+  h2 {
+    font-size: 2em;
+    margin-top: 10px;
+  }
+}
+
+#myModal {
+  font-size: 2em;
+}
+
+#modalImg {
+  width: 200px;
+  height: fit-content;
+  border-radius: 100%;
+  margin: 2%;
+}
+
+#phone,
+#address,
+#comment,
+#email {
+  padding: auto;
+  font-size: 1.5em;
+}
+
+#editName,
+#editPhone,
+#editAddress,
+#addName,
+#addPhone,
+#addAddress,
+#addNewImage,
+#editNewImage,
+#addEmail,
+#addComment,
+#editComment,
+#editEmail,
+label {
+  padding: auto;
+  font-size: 1.5em;
+}
+
+.modal-content input {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.close-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#saveEdit,
+#saveNewContact {
+  border: none;
+  background-color: rgb(21, 174, 123);
+  padding: 10px;
+  border-radius: 10px;
+  color: aliceblue;
+  font-size: 1.5em;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#uploadBtn1,
+#uploadBtn2 {
+  border: none;
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 10px;
+  color: aliceblue;
+  font-size: 1.5em;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region media */
+@media only screen and (max-width: 430px) {
+  h1 {
+    font-size: 2.2em;
+  }
+
+  main {
+    width: 90%;
+    margin: auto;
+  }
+
+  #logo {
+    width: 140px;
+    margin-bottom: 20px;
+  }
+
+  #main_btns {
+    display: flexbox;
+    text-align: center;
+  }
+
+  #search_box {
+    width: 300px;
+  }
+
+  nav ul li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1.8em;
+    padding: 2%;
+  }
+
+  #list ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .images {
+    max-width: 140px;
+  }
+
+  .names {
+    text-align: center;
+    margin-right: 0%;
+    font-size: 2em;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+  }
+
+  img {
+    width: 35px;
+  }
+
+  .info,
+  .edit,
+  .trash_bin {
+    margin: 0;
+  }
+
+  #contactUs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1.2em;
+
+  }
+}
+
+#myModal {
+  font-size: 1.5em;
+}
+
+/* #endregion */

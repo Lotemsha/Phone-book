@@ -1,50 +1,43 @@
 "use strict"
-// // #region Modal open and close 
+// #region Modal open and close 
 function openModal() {
   document.getElementById('myModal').style.display = 'flex';
+  document.body.classList.add('no-scroll');
 }
 
-// display edit popup .(display the edit popup)
 function openEditModal() {
   document.getElementById("editModal").style.display = "flex";
+  document.body.classList.add('no-scroll');
 }
 
-// display add popup (display the add contact popup)
 function openAddModal() {
   document.getElementById("addModal").style.display = "flex";
+  document.body.classList.add('no-scroll');
 }
 
-// functions that close the popups (used on click on the close Button) :
-function closeModal() {
+function closeModal(event) {
   const modal = document.getElementById("myModal");
-  modal.style.display = "none";
+  if (event.target === document.getElementById('myModal') || event.target === document.getElementById('closeModalBtn')) {
+    modal.style.display = "none";
+    document.body.classList.remove("no-scroll");
+  }
 }
 
-// a method that close the edit popup
-function closeEditModal() {
+function closeEditModal(event) {
   const modal = document.getElementById("editModal");
-  modal.style.display = "none";
+  if (event.target === document.getElementById('editModal') || event.target === document.getElementById('closeEditModalBtn')) {
+    modal.style.display = "none";
+    document.body.classList.remove("no-scroll");
+  }
 }
 
-// A method that close the add popup
-function closeAddModal() {
+function closeAddModal(event) {
   const modal = document.getElementById("addModal");
-  modal.style.display = "none";
+  if (event.target === document.getElementById('addModal') || event.target === document.getElementById('closeAddModalBtn')) {
+    modal.style.display = "none";
+    document.body.classList.remove("no-scroll");
+  }
 }
-
-// A method that call the close methods and close all popups that were displayed :
-const closeBtn = document.querySelectorAll(".close-btn");
-closeBtn.forEach(Btn => {
-  Btn.addEventListener("click", () => {
-    if (document.getElementById("editModal").style.display === "flex")
-      closeEditModal();
-    else if (document.getElementById("addModal").style.display === "flex")
-      closeAddModal();
-    else if (document.getElementById("myModal").style.display === "flex")
-      closeModal();
-  });
-});
-
 
 //#endregion
 // #region List Array
@@ -85,7 +78,6 @@ let listArr = [
 ];
 //#endregion
 //#region global parameters
-
 // Creating a list :
 let list = document.getElementById("list");
 // Creating the ul:
@@ -110,9 +102,6 @@ const emptyMassege = document.getElementById("emptyMessage");
 // #region Build Array
 listArr.sort((a, b) => a.name.localeCompare(b.name));
 listArr.forEach((item) => {
-
-  // Creating the contacters list vairibals :
-
   let li = document.createElement("li");
   let img = document.createElement("img");
   let span = document.createElement("span");
@@ -125,8 +114,6 @@ listArr.forEach((item) => {
   let editImg = document.createElement("img");
   let trashImg = document.createElement("img");
 
-
-  //  הגדרת התוכן והעיצוב של האלמנטים
   img.src = item.img;
   img.className = "images";
 
@@ -141,8 +128,6 @@ listArr.forEach((item) => {
   editBtn.className = "edit";
   trashBtn.className = "trash_bin";
 
-
-  // חיבור התמונות לכפתורים
   infoBtn.appendChild(infoImg);
   editBtn.appendChild(editImg);
   trashBtn.appendChild(trashImg);
@@ -150,13 +135,10 @@ listArr.forEach((item) => {
   let buttonContainer = document.createElement("div");
   buttonContainer.className = "button-row";
 
-  // הכנסת כל הכפתורים לDIV שנקרא BUTTON CONTAINER 
   buttonContainer.appendChild(infoBtn);
   buttonContainer.appendChild(editBtn);
   buttonContainer.appendChild(trashBtn);
 
-
-  // הכנסת כל האלימטים לרשימה אחת 
   li.appendChild(img);
   li.appendChild(span);
   li.appendChild(buttonContainer);
