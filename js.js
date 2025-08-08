@@ -248,7 +248,7 @@ document.getElementById("saveEdit").addEventListener("click", function () {
       console.warn(`Duplicate name detected: "${name}"`);
       return;
     }
-    closeEditModal({ target: document.getElementById("editModal") });
+    closeEditModal();
     currentEditing = null;
   }
 });
@@ -264,11 +264,11 @@ const preview = document.getElementById("previewContainer");
 
 // Upload button triggers
 document.getElementById("uploadBtn2").addEventListener("click", () => {
-  hiddenInput.click();
+  hiddenInput.click(); // instead of display flex , because its not set on display none on html
 });
 
 document.getElementById("uploadBtn1").addEventListener("click", () => {
-  hiddenInput.click();
+  hiddenInput.click();  // instead of display flex , because its not set on display none on html
 });
 
 // When image is selected
@@ -315,13 +315,10 @@ deleteAllContacts.addEventListener('click', () => {
   const confirmDelete = confirm("Are you sure you want to delete ALL your contacts?");
   if (confirmDelete) {
     ul.innerHTML = "";
-    listArr.length = 0;
+    listArr.length = 0; // reset the contacters array 
+    const emptyMassege = document.getElementById("emptyMessage");
+    emptyMassege.style.display = "block";
   }
-
-  const emptyMassege = document.getElementById("emptyMessage");
-
-  emptyMassege.style.display = "block";
-
   updatePeopleCount();
 })
 
@@ -332,8 +329,7 @@ addNewContact.addEventListener('click', () => {
 
 // save new contact button function:
 document.getElementById("saveNewContact").addEventListener("click", function () {
-  event.preventDefault();
-
+  // Using trim to avoid un necaciry spaces :
   const name = document.getElementById("addName").value.trim();
   const phone = document.getElementById("addPhone").value.trim();
   const address = document.getElementById("addAddress").value.trim();
@@ -362,14 +358,14 @@ document.getElementById("saveNewContact").addEventListener("click", function () 
       imgBtnTrash: "./icons/bin_delete_recycle_remove_trash_icon.png"
     };
 
-    listArr.push(newContact);
-    buildContactElement(newContact);
+    listArr.push(newContact); // Addubg bew contact to the end of the array 
+    buildContactElement(newContact); // בונה את האיש קשר ברשימה
     // sort by name
     listArr.sort((a, b) => a.name.localeCompare(b.name));
     ul.innerHTML = ""; // נקה את הרשימה
     listArr.forEach(buildContactElement);
 
-    closeAddModal({ target: document.getElementById("addModal") });
+    closeAddModal();
     clearAddFields();
   }
   // make sure to enter a name
@@ -387,8 +383,8 @@ document.getElementById("saveNewContact").addEventListener("click", function () 
 
 // Creating a method that count the current number of people:
 const updatePeopleCount = () => {
-  const allContacts = ul.querySelectorAll("li");
-  const shownContacts = Array.from(allContacts).filter(li => li.style.display !== "none");
+  const allContacts = ul.querySelectorAll("li"); // all Contacts will get the value of all the elements li 
+  const shownContacts = Array.from(allContacts).filter(li => li.style.display !== "none"); // making all contacts to array that be used to filter all the li that are displayed (not display none) 
   peopleCount.textContent = ` ${shownContacts.length} people`;
 };
 
@@ -407,7 +403,7 @@ topBarSearch.addEventListener("input", () => {
   const searchTerm = topBarSearch.value.toLowerCase();
   const listItems = document.querySelectorAll("#ul > li");
 
-  listItems.forEach(li => {
+  listItems.forEach(li => { // checking in every contacter if his name include the search term if does display it else diplay none
     const nameElement = li.querySelector(".names");
     const nameText = nameElement.textContent.toLowerCase();
 
@@ -417,7 +413,7 @@ topBarSearch.addEventListener("input", () => {
       li.style.display = "none";
   });
 
-  updatePeopleCount();
+  updatePeopleCount(); // Updating people count based on the people that contain search term
 });
 //#endregion
 //#region new contact:
@@ -500,8 +496,8 @@ function buildContactElement(item) {
       li.remove();
     }
     // הסרה מהמערך
-    const index = listArr.indexOf(item);
-    if (index !== -1) {
+    const index = listArr.indexOf(item); // index of is checking if the item is in the array if yes return its index else return -1
+    if (index !== -1) { // if item found remove from the array .
       listArr.splice(index, 1);
     }
 
