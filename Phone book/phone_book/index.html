@@ -86,9 +86,10 @@
           </ul>
         </div>
 
-        <div class="modal" id="myModal">
+        <div class="modal" id="myModal" onclick="closeModal(event)">
           <div class="modal-content">
-            <button type="button" class="close-btn" id="closeModalBtn"><img src="icons/exit.png" alt="Exit"></button>
+            <button type="button" class="close-btn" id="closeModalBtn" onclick="closeModal(event)"><img
+                src="icons/exit.png" alt="Exit"></button>
             <h2>Modal Popup</h2>
             <img src="/icons/user.png" alt="image" id="modalImg">
             <p id="modalPhone"></p>
@@ -98,10 +99,10 @@
           </div>
         </div>
 
-        <div class="modal" id="editModal">
+        <div class="modal" id="editModal" onclick="closeEditModal(event)">
           <div class="modal-content">
-            <button type="button" class="close-btn" id="closeEditModalBtn"><img src="icons/exit.png"
-                alt="Exit"></button>
+            <button type="button" class="close-btn" id="closeEditModalBtn" onclick="closeEditModal(event)"><img
+                src="icons/exit.png" alt="Exit"></button>
             <h2>Edit contact <br> information</h2>
             <label for="editName">Name:</label>
             <input id="editName" type="text" placeholder="Name">
@@ -121,9 +122,10 @@
           </div>
         </div>
 
-        <div class="modal" id="addModal">
+        <div class="modal" id="addModal" onclick="closeAddModal(event)">
           <div class="modal-content">
-            <button class="close-btn" id="closeAddModalBtn"><img src="icons/exit.png" alt="Exit"></button>
+            <button class="close-btn" id="closeAddModalBtn" onclick="closeAddModal(event)"><img src="icons/exit.png"
+                alt="Exit"></button>
             <h2>Add contact <br> information</h2>
             <label for="addName">Name:</label>
             <input id="addName" type="text" placeholder="Name">
